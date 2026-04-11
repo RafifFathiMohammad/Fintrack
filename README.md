@@ -21,4 +21,4 @@ fintrack/
 ```
 ## 🚀 Cara Menjalankan Project (Local)
 
--**1**
+**1**
