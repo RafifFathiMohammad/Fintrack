@@ -20,4 +20,20 @@ router.post('/', async (req, res) => {
     res.status(201).json({ message: "Transaksi berhasil dicatat!" });
 });
 
+// DELETE: Menghapus transaksi berdasarkan ID
+router.delete('/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const db = await initDB();
+        const result = await db.run('DELETE FROM transactions WHERE id = ?', id);
+        
+        if (result.changes === 0) {
+            return res.status(404).json({ error: "Transaksi tidak ditemukan" });
+        }
+        res.json({ message: "Transaksi berhasil dihapus!" });
+    } catch (error) {
+        res.status(500).json({ error: "Gagal menghapus transaksi" });
+    }
+});
+
 module.exports = router;

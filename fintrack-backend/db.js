@@ -18,6 +18,18 @@ async function initDB() {
             tanggal DATETIME DEFAULT CURRENT_TIMESTAMP
         )
     `);
+
+        // Tambahkan di dalam db.exec pada db.js
+    await db.exec(`
+        CREATE TABLE IF NOT EXISTS products (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            nama_produk TEXT NOT NULL,
+            stok INTEGER DEFAULT 0,
+            harga REAL,
+            satuan TEXT DEFAULT 'pcs'
+        )
+    `);
+    
     return db;
 }
 

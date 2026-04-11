@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 // Tambahkan ini di index.js
 const transactionRoutes = require('./routes/transactionRoutes');
+const productRoutes = require('./routes/productRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -12,6 +13,7 @@ app.use(cors());
 app.use(express.json()); // Agar server bisa membaca data JSON dari frontend
 
 app.use('/api/transactions', transactionRoutes);
+app.use('/api/products', productRoutes);
 
 // Test Route (UI Sederhana untuk cek server)
 app.get('/', (req, res) => {
