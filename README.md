@@ -19,3 +19,6 @@ fintrack/
 │   └── .gitignore          # File yang diabaikan Git
 └── README.md
 ```
+## 🚀 Cara Menjalankan Project (Local)
+
+-**1**
