@@ -18,4 +18,4 @@ fintrack/
 │   ├── package.json        # Dependencies
 │   └── .gitignore          # File yang diabaikan Git
 └── README.md
-
+```
