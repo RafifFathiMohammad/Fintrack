@@ -1,72 +1,96 @@
-# FinTrack UMKM — Backend API
+# FinTrack UMKM — Backend & Dashboard Management
 
-FinTrack UMKM adalah solusi manajemen keuangan digital untuk membantu pelaku UMKM mencatat transaksi dan mengelola stok produk secara efisien.
+FinTrack UMKM adalah solusi manajemen keuangan digital untuk membantu pelaku UMKM mencatat transaksi harian, mengelola stok produk, serta memantau kesehatan finansial melalui dashboard ringkasan otomatis yang terintegrasi.
 
 ## 🛠️ Tech Stack
-- **Runtime**: Node.js
-- **Framework**: Express.js
-- **Database**: SQLite3
-- **Tools**: CORS, Dotenv, Postman
+
+Runtime: Node.js
+
+Framework: Express.js
+
+Database: SQLite3
+
+Styling UI: Tailwind CSS (via CDN)
+
+Tools: CORS, Dotenv, Postman (untuk testing awal)
 
 ## 📁 Struktur Folder
-```text
+
 fintrack/
-├── fintrack-backend/
-│   ├── routes/             # Endpoint API (Transactions & Products)
+├── fintrack-backend/       # Source code Backend
+│   ├── routes/             # Logika API (Transactions, Products, Dashboard)
 │   ├── db.js               # Konfigurasi Database SQLite
-│   ├── index.js            # Entry Point Server
-│   ├── package.json        # Dependencies
-│   └── .gitignore          # File yang diabaikan Git
-└── README.md
-```
+│   ├── index.js            # Entry Point Server (Port 5000)
+│   ├── package.json        # Dependencies project
+│   └── .gitignore          # Daftar file yang diabaikan Git (node_modules, .db, .env)
+├── index.html              # Antarmuka Admin (Dashboard & Management)
+└── README.md               # Dokumentasi Project
 
-## 🚀 Cara Menjalankan Project (Local)
-**1. Clone Repository**
-git clone [https://github.com/RafifFathiMohammad/Fintrack.git](https://github.com/RafifFathiMohammad/Fintrack.git)
+
+## 🚀 Cara Menjalankan Project (Lokal)
+
+1. Persiapan Backend
+
+Buka terminal dan masuk ke folder backend:
+
 cd fintrack/fintrack-backend
-
-**2. Install Dependencies**
 npm install
-
-**3. node index.js**
 node index.js
 
-## Server akan berjalan di http://localhost:5000
+
+Server akan berjalan secara default di http://localhost:5000
+
+2. Menjalankan Dashboard (Frontend)
+
+Buka file index.html yang berada di folder utama fintrack/ menggunakan browser.
+Sangat disarankan menggunakan extension Live Server di VS Code agar fitur fetch berjalan lancar.
 
 ## 📡 API Endpoints
-**1. Transaksi (/api/transactions)**
-- GET /api/transactions : Mengambil semua riwayat transaksi.
 
-- POST /api/transactions : Mencatat transaksi baru (pemasukan/pengeluaran).
+1. Transaksi (/api/transactions)
 
-- DELETE /api/transactions/:id : Menghapus data transaksi berdasarkan ID.
+GET /api/transactions : Mengambil semua riwayat transaksi lengkap.
 
-**2. Produk & Stok (/api/products)**
-- GET /api/products : Melihat daftar stok produk.
+POST /api/transactions : Mencatat transaksi baru (pemasukan/pengeluaran).
 
-- POST /api/products : Menambah produk baru ke database.
+DELETE /api/transactions/:id : Menghapus data transaksi berdasarkan ID.
 
-- DELETE /api/products/:id : Menghapus produk dari daftar.
+2. Produk & Stok (/api/products)
+
+GET /api/products : Melihat daftar seluruh stok produk.
+
+POST /api/products : Menambah produk baru ke database.
+
+DELETE /api/products/:id : Menghapus produk dari daftar.
+
+3. Dashboard (/api/dashboard)
+
+GET /api/dashboard/summary : Mengambil ringkasan pemasukan, pengeluaran, dan laba otomatis (khusus hari ini).
 
 ## 📌 Status Fitur Backend
-**Selesai (Complete)**
-- Inisialisasi Project: Setup Node.js, Express, dan struktur folder.
 
-- Database Engine: Integrasi SQLite3 untuk penyimpanan data persisten secara lokal.
+✅ Selesai (Complete)
 
-- API Transaksi (CRUD): Endpoint untuk mencatat, melihat, dan menghapus pemasukan/pengeluaran UMKM.
+Inisialisasi Project: Setup Node.js, Express, dan struktur folder modular.
 
-- API Produk & Stok (CRUD): Endpoint untuk manajemen inventaris barang dagangan.
+Database Engine: Integrasi SQLite3 untuk penyimpanan data persisten.
 
-- Keamanan Dasar: Implementasi CORS agar API bisa diakses oleh frontend nantinya.
+API Transaksi (CRUD): Sistem pencatatan keuangan lengkap dengan fitur hapus.
 
-**Dalam Rencana (Planned / In Development)**
-- API Dashboard Summary: Logika perhitungan otomatis untuk total laba/rugi dan sisa saldo.
+API Produk & Stok (CRUD): Manajemen inventaris barang dagangan UMKM.
 
-- Automated Report Generator: Implementasi library (PDFKit/jsPDF) untuk mengonversi data transaksi menjadi file PDF.
+Dashboard Logic: Perhitungan otomatis laba/rugi harian di sisi backend.
 
-- Authentication & Authorization: Sistem login untuk pemilik UMKM menggunakan JWT (JSON Web Token).
+Integrasi Frontend: Antarmuka berbasis web (index.html) untuk mengelola data (Add/View/Delete) tanpa alat bantu luar.
 
-- Data Export/Import: Fitur untuk mengekspor riwayat transaksi ke format CSV atau Excel.
+⏳ Dalam Rencana (Planned)
 
-- Deployment: Hosting backend ke platform cloud (Railway/Render) agar dapat diakses secara publik.
+Automated Report: Fitur konversi data transaksi menjadi laporan PDF otomatis.
+
+User Auth: Sistem login dan hak akses untuk pemilik UMKM (JWT).
+
+Data Export: Ekspor riwayat data ke format Excel atau CSV.
+
+Cloud Deployment: Hosting aplikasi agar dapat diakses secara publik (online).
+
+Status Akhir: Fitur Utama Backend & Integrasi Dashboard Management Complete.
